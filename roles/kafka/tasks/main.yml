@@ -22,14 +22,17 @@
   file: src={{ kafka_dir }}/logs dest=/var/log/kafka
         state=link mode=0444 force=yes
 
+- name: create etc/kafka dir
+  file: path=/etc/kafka state=directory
+
 - name: kafka server.properties
   template: src=.{{ kafka_propfile }}.j2 dest={{ kafka_propfile }}
             mode=0444
   notify: bounce kafka
 
 - name: kafka upstart config
-  template: src=etc/init/kafka.conf.j2 dest=/etc/init/kafka.conf
-            mode=0555 owner=root group=root
+  template: src=etc/init.d/kafka.j2 dest=/etc/init.d/kafka
+            mode=0755 owner=root group=root
   notify: bounce kafka
 
 - name: kafka service

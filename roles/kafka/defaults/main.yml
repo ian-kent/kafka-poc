@@ -6,7 +6,7 @@ kafka_tarball_url: http://mirrors.ukfast.co.uk/sites/ftp.apache.org/kafka/{{ kaf
 kafka_user: kafka
 kafka_maxfiles: 64000
 
-kafka_propfile: "{{ kafka_dir }}/config/server.properties"
+kafka_propfile: "/etc/kafka/server.properties"
 # remaining vars in this file template kafka_propfile
 
 # 'chroot' of settings under this znode
